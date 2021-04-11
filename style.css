@@ -1,0 +1,26 @@
+#modal {
+    border-radius: 10px;
+    background-color: maroon;
+    color: white;
+  
+    margin: 1em;
+    padding: 1em;
+  
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  #modal p {
+    margin-bottom: 0;
+  }
+  
+  .activated-heart {
+    color: red;
+    cursor: pointer;
+  }
+  
+  .hidden {
+    visibility: hidden;
+  }
