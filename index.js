@@ -1,4 +1,9 @@
 // Add your code here
+
+const INFORM = 'inform';
+const WARNING = 'warning';
+const ERROR = 'error';
+
 let frmData = {
     name: "",
     email: ""
@@ -34,7 +39,6 @@ function submitData(userName, eMail) {
                         console.log(object);
                         let eleDiv = document.createElement('div');
                         eleDiv.style.display = 'block';
-                        eleDiv.className = 'something';
                         eleDiv.textContent = object['id'];
                         document.body.appendChild(eleDiv);
                     })
@@ -43,7 +47,6 @@ function submitData(userName, eMail) {
                         console.log(error.message);
                         let eleDiv = document.createElement('div');
                         eleDiv.style.display = 'block';
-                        eleDiv.className = 'something';
                         eleDiv.textContent = error.message;
                         document.body.appendChild(eleDiv);
                     });
@@ -81,13 +84,28 @@ function dataIntegrity(userName, eMail) {
     return true;
 }
 
-function msgInform(message) {
+function msgInform(message, styleShow = ERROR) {
     let modal = document.getElementById('modal');
     let msg = document.getElementById('modal-message');
+    let msgTitle = document.querySelector('#modal h2');
+
+    switch (styleShow) {
+        case WARNING :
+            msgTitle.innerText = 'Warning!';
+            modal.style.backgroundColor = 'darkorange';
+            break;
+        case INFORM :
+            msgTitle.innerText = 'Message!';
+            modal.style.backgroundColor = 'green';
+            break;
+        default :
+            msgTitle.innerText = 'Error!';
+            modal.style.backgroundColor = 'maroon';
+    }
+
     msg.innerText = message; // message to show out
     modal.className = ''; // turn on message
     setTimeout(function(){
         modal.className="hidden";// turn off message
     },3e3);
 }
-
